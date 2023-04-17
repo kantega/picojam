@@ -37,7 +37,7 @@ class LCD(framebuf.FrameBuffer):
         # set screen brightness
         pwm = PWM(Pin(BL)) 
         pwm.freq(1000)
-        pwm.duty_u16(32768) # max 65535 - mid value
+        pwm.duty_u16(65535) # max 65535
         
     def write_cmd(self, cmd):
         self.cs(1)
