@@ -170,6 +170,17 @@ assert color_rgb(0, 0, 255) == 0xF800
 assert color_rgb(255, 255, 255) == 0xFFFF
 
 
+# Rect = [x, y, w, h]
+def detect_collision(rect1, rect2):
+    if (rect1[0] < rect2[0] + rect2[2] and
+        rect1[0] + rect1[2] > rect2[0] and
+        rect1[1] < rect2[1] + rect2[3] and
+        rect1[3] + rect1[1] > rect2[1]):
+        return True
+    else:
+        return False
+    
+
 class BuggyFPSEstimator:
     def __init__(self):
         self._sample_start_time = utime.time_ns()
