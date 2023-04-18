@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+
+"""
+Check that a connected rPI Pico board runs the expected version of MicroPython
+and has the expected files stored in flash.
+"""
+
+import subprocess
+
+full_output = subprocess.check_output(
+    "rshell repl pyboard 'print(42)~'",
+    shell=True
+).decode('utf-8')
+
+assert 'Retrieving root directories ... /main.py/ /util.py/\n' in full_output
+assert 'MicroPython v1.19.1-1016-gb525f1c9e on 2023-04-14; Raspberry Pi Pico with RP2040' in full_output
+print('all good')
