@@ -28,7 +28,7 @@ git clone https://github.com/kantega/picojam.git
 
 ## Oppgave 1: Oppsett av lokal toolchain
 
-For å snakke med Pico'en, kopiere over filer, osv. bruker vi 
+For å snakke med Pico'en, kopiere over filer, osv. bruker vi
 programmet [Thonny](https://thonny.org/).
 
 Thonny funker på Windows, OS X og Linux.
@@ -38,7 +38,7 @@ og så gå på "Run" og "Configure interpreter" og velge
 "MicroPython (Raspberry Pi Pico)".
 
 
-## Oppgave 3: Last opp og kjør et skikkelig program på PI-en 
+## Oppgave 2: Last opp og kjør et skikkelig program på PI-en
 
 Nå er det på høy tid med litt skikkelig programmering på PI-en.
 
@@ -48,7 +48,7 @@ knappene og joysticken på PI-en allerede er satt opp.
 Åpne main.py i Thonny.
 
 
-## Oppgave 4: Gamedev!
+## Oppgave 3: Gamedev!
 
 Det egentlig målet vårt med workshop'en er å selvfølgelig å gjøre litt
 spillutvikling!
@@ -56,7 +56,7 @@ spillutvikling!
 Dere står fritt til å lage hva dere vil, men det kan være lurt å hive seg ut på
 en klone av en gammel arkade- eller retro-klassiker.
 
-Å implementere en Pong-klone er en bra utfordring. 
+Å implementere en Pong-klone er en bra utfordring.
 
 Lykke til!
 

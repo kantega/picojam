@@ -3,7 +3,7 @@ import utime
 from machine import Pin, PWM, SPI
 
 
-BL = 13  
+BL = 13
 CS = 9
 DC = 8
 MOSI = 11
@@ -15,10 +15,10 @@ class LCD(framebuf.FrameBuffer):
     def __init__(self):
         self.width = 240
         self.height = 240
-        
+
         self.cs = Pin(CS, Pin.OUT)
         self.rst = Pin(RST, Pin.OUT)
-        
+
         self.cs(1)
         self.spi = SPI(1)
         self.spi = SPI(1, 1000_000)
@@ -28,23 +28,23 @@ class LCD(framebuf.FrameBuffer):
         self.buffer = bytearray(self.height * self.width * 2)
         super().__init__(self.buffer, self.width, self.height, framebuf.RGB565)
         self.init_display()
-        
+
         self.red   = 0x07E0
         self.green = 0x001f
         self.blue  = 0xf800
         self.white = 0xffff
 
         # set screen brightness
-        pwm = PWM(Pin(BL)) 
+        pwm = PWM(Pin(BL))
         pwm.freq(1000)
         pwm.duty_u16(65535) # max 65535
-        
+
     def write_cmd(self, cmd):
         self.cs(1)
         self.dc(0)
         self.cs(0)
         self.spi.write(bytearray([cmd]))
-        self.cs(1)  
+        self.cs(1)
 
     def write_data(self, buf):
         self.cs(1)
@@ -57,11 +57,11 @@ class LCD(framebuf.FrameBuffer):
         self.rst(1)
         self.rst(0)
         self.rst(1)
-        
+
         self.write_cmd(0x36)
         self.write_data(0x70)
 
-        self.write_cmd(0x3A) 
+        self.write_cmd(0x3A)
         self.write_data(0x05)
 
         self.write_cmd(0xB2)
@@ -72,7 +72,7 @@ class LCD(framebuf.FrameBuffer):
         self.write_data(0x33)
 
         self.write_cmd(0xB7)
-        self.write_data(0x35) 
+        self.write_data(0x35)
 
         self.write_cmd(0xBB)
         self.write_data(0x19)
@@ -84,13 +84,13 @@ class LCD(framebuf.FrameBuffer):
         self.write_data(0x01)
 
         self.write_cmd(0xC3)
-        self.write_data(0x12)   
+        self.write_data(0x12)
 
         self.write_cmd(0xC4)
         self.write_data(0x20)
 
         self.write_cmd(0xC6)
-        self.write_data(0x0F) 
+        self.write_data(0x0F)
 
         self.write_cmd(0xD0)
         self.write_data(0xA4)
@@ -127,7 +127,7 @@ class LCD(framebuf.FrameBuffer):
         self.write_data(0x1F)
         self.write_data(0x20)
         self.write_data(0x23)
-        
+
         self.write_cmd(0x21)
 
         self.write_cmd(0x11)
@@ -140,15 +140,15 @@ class LCD(framebuf.FrameBuffer):
         self.write_data(0x00)
         self.write_data(0x00)
         self.write_data(0xef)
-        
+
         self.write_cmd(0x2B)
         self.write_data(0x00)
         self.write_data(0x00)
         self.write_data(0x00)
         self.write_data(0xEF)
-        
+
         self.write_cmd(0x2C)
-        
+
         self.cs(1)
         self.dc(1)
         self.cs(0)
@@ -156,14 +156,18 @@ class LCD(framebuf.FrameBuffer):
         self.cs(1)
 
 
-def color_rgb(red: uint, green: uint, blue: uint) -> uint: 
-    """Convert RGB888 to RGB565."""
+def color_rgb(red: uint, green: uint, blue: uint) -> uint:
+    """Convert RGB888 to BRG565."""
     return (
-        ((green & 0b00011100) << 3) + 
-        (((blue & 0b11111000) >> 3) << 8) +
-        (red & 0b11111000) + 
-        ((green & 0b11100000) >> 5)
+        ((blue  & 0b11111000) << (6+5-3)) |
+        ((red   & 0b11111100) << (5-2)) |
+        ((green & 0b11111000) >> 3)
     )
+
+assert color_rgb(255, 0, 0) == 0x07E0
+assert color_rgb(0, 255, 0) == 0x001F
+assert color_rgb(0, 0, 255) == 0xF800
+assert color_rgb(255, 255, 255) == 0xFFFF
 
 
 class BuggyFPSEstimator:
