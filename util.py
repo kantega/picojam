@@ -156,18 +156,11 @@ class LCD(framebuf.FrameBuffer):
         self.cs(1)
 
 
-def color_rgb(red: uint, green: uint, blue: uint) -> uint:
-    """Convert RGB888 to BRG565."""
-    return (
-        ((blue  & 0b11111000) << (6+5-3)) |
-        ((red   & 0b11111100) << (5-2)) |
-        ((green & 0b11111000) >> 3)
-    )
 
-assert color_rgb(255, 0, 0) == 0x07E0
-assert color_rgb(0, 255, 0) == 0x001F
-assert color_rgb(0, 0, 255) == 0xF800
-assert color_rgb(255, 255, 255) == 0xFFFF
+def color_rgb(R,G,B):
+  mix1 = ((R&0xF8)*256) + ((G&0xFC)*8) + ((B&0xF8)>>3)
+  return (mix1 & 0xFF) *256 + int((mix1 & 0xFF00) /256) 
+
 
 
 # Rect = [x, y, w, h]
