@@ -74,8 +74,9 @@ while True:
     lcd.fill(BLACK)
 
     # Display a nice banner.
-    lcd.text('ABAKUS @ KANTEGA', 60, 60, BLUE)
-
+    lcd.text('@ KANTEGA', 60, 60, BLUE)
+    # TODO 0:
+    # Change the banner so it includes your name!
 
     #
     # GREEN BOX
