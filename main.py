@@ -74,7 +74,7 @@ while True:
     lcd.fill(BLACK)
 
     # Display a nice banner.
-    lcd.text('@ KANTEGA', 60, 60, BLUE)
+    lcd.text('GAMEJAM @ KANTEGA', 60, 60, BLUE)
     # TODO 0:
     # Change the banner so it includes your name!
 
@@ -119,7 +119,7 @@ while True:
     lcd.pixel(bouncing_ball_x, bouncing_ball_y, YELLOW)
 
     # TODO 3:
-    # Change the color of the text "ABAKUS @ KANTEGA" to YELLOW for 5 frames every time the bouncing ball hits a wall.
+    # Change the color of the text "GAMEJAM @ KANTEGA" to YELLOW for 5 frames every time the bouncing ball hits a wall.
     #
     # Tip: Set a variable flash_frames_remaining = 5 when the ball hits the wall, and use it to
     # determine which color to use in the call to lcd.text...
