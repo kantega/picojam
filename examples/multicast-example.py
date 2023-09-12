@@ -23,8 +23,6 @@ BLUE  = color_rgb(0, 0, 255)
 YELLOW = color_rgb(255, 255, 0)
 WHITE = color_rgb(255, 255, 255)
 
-# https://docs.micropython.org/en/latest/library/socket.html
-
 # Pico can only listen to this address
 IN_UDP_IP = '255.255.255.255'
 
@@ -41,8 +39,8 @@ sta_if.connect('KantegaGuest', 'GjestKantega')
 
 # socket for reading
 in_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-in_sock.bind((UDP_IP, UDP_PORT))
-in_sock.settimeout(0.1)
+in_sock.bind((IN_UDP_IP, UDP_PORT))
+in_sock.settimeout(2.1)
 
 # socket for writing
 out_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -98,6 +96,6 @@ while attempts > 0:
         if answerNum >= 0:
             print('User chose option ' + str(answerNum))
             message = '{"to":"kahoot-server", "a":' + str(answerNum) + '}'
-            print('Sending '  + message + ' to ' + UDP_IP + ':' + str(UDP_PORT))
+            print('Sending '  + message + ' to ' + OUT_UDP_IP + ':' + str(UDP_PORT))
             out_sock.sendto(message.encode('utf-8'), (OUT_UDP_IP, UDP_PORT))
             attempts = 10
