@@ -49,7 +49,7 @@ while True:
             lcd.rect(x, y, cell_size, cell_size, c)
 
     # Display banner and points
-    lcd.text('ABAKUS @ KANTEGA', 10, 10, RED)
+    lcd.text('ONLINE @ KANTEGA', 10, 10, RED)
     lcd.text('POINTS:%d' % points, 10, 20, RED)
     
     # Line that holds buttons
