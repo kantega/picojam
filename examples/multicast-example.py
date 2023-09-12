@@ -23,6 +23,8 @@ BLUE  = color_rgb(0, 0, 255)
 YELLOW = color_rgb(255, 255, 0)
 WHITE = color_rgb(255, 255, 255)
 
+# https://docs.micropython.org/en/latest/library/socket.html
+
 # Pico can only listen to this address
 IN_UDP_IP = '255.255.255.255'
 
