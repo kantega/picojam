@@ -12,5 +12,7 @@ Se [HOWTO.md](HOWTO.md) for instruksjoner :-)
 - Micro-USB kabel
 
 ## Referanser og dokumentasjon:
-- Quick reference for micropyhton RP2
-  - https://docs.micropython.org/en/latest/rp2/quickref.html
+- Micropython og micro libraries:
+  - https://micropython-docs.readthedocs.io/en/latest/library/index.html#python-standard-libraries-and-micro-libraries
+- Grafikk med framebuf:
+  - https://docs.micropython.org/en/latest/library/framebuf.html
