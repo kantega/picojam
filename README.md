@@ -1,4 +1,4 @@
-# KNTG RPI PICO GAME JAM
+# KANTEGA RPI PICO GAME JAM
 
 Se [HOWTO.md](HOWTO.md) for instruksjoner :-)
 
