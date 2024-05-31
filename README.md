@@ -3,7 +3,7 @@
 Se [HOWTO.md](HOWTO.md) for instruksjoner :-)
 
 
-Nødvendig utstyr for gjennomføring:
+## Nødvendig utstyr for gjennomføring:
 
 - [Raspberry Pi Pico WH](https://thepihut.com/products/raspberry-pi-pico-w?variant=41952994787523)
 
@@ -11,6 +11,6 @@ Nødvendig utstyr for gjennomføring:
 
 - Micro-USB kabel
 
-Referanser og dokumentasjon:
+## Referanser og dokumentasjon:
 - Quick reference for micropyhton RP2
   - https://docs.micropython.org/en/latest/rp2/quickref.html
